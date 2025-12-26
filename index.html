@@ -11,6 +11,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
         
         html {
@@ -29,7 +30,7 @@
         
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
         }
         
         ::-webkit-scrollbar-track {
@@ -48,7 +49,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 80px 20px;
+            padding: 60px 20px;
             position: relative;
         }
         
@@ -111,9 +112,9 @@
         }
         
         .hero h1 {
-            font-size: 4.5em;
+            font-size: 3.5em;
             font-weight: 800;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-shadow: 0 8px 32px rgba(0,0,0,0.4);
             letter-spacing: -2px;
             animation: textGlow 3s ease-in-out infinite;
@@ -125,16 +126,16 @@
         }
         
         .hero .subtitle {
-            font-size: 1.6em;
+            font-size: 1.4em;
             font-weight: 400;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             opacity: 0.95;
             text-shadow: 0 4px 16px rgba(0,0,0,0.3);
         }
         
         .emoji-big {
-            font-size: 6em;
-            margin-bottom: 30px;
+            font-size: 5em;
+            margin-bottom: 25px;
             animation: float 3s ease-in-out infinite;
             filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
         }
@@ -146,13 +147,14 @@
         
         .scroll-indicator {
             position: absolute;
-            bottom: 40px;
+            bottom: 30px;
             animation: bounce 2s infinite;
-            font-size: 2.5em;
+            font-size: 2em;
             opacity: 0.8;
             cursor: pointer;
             transition: all 0.3s ease;
             filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+            z-index: 10;
         }
         
         .scroll-indicator:hover {
@@ -193,15 +195,15 @@
             }
         }
         
-        /* Glassmorphism Card - UPGRADED */
+        /* Glassmorphism Card - MOBILE OPTIMIZED */
         .content-box {
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(20px) saturate(180%);
             -webkit-backdrop-filter: blur(20px) saturate(180%);
-            padding: 60px;
-            border-radius: 40px;
+            padding: 40px 25px;
+            border-radius: 30px;
             box-shadow: 
-                0 30px 80px rgba(0, 0, 0, 0.3),
+                0 20px 60px rgba(0, 0, 0, 0.3),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -226,26 +228,19 @@
             to { transform: rotate(360deg); }
         }
         
-        .content-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 
-                0 40px 100px rgba(0, 0, 0, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.15);
-        }
-        
         .section-light .content-box {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             box-shadow: 
-                0 30px 80px rgba(0, 0, 0, 0.15),
+                0 20px 60px rgba(0, 0, 0, 0.15),
                 inset 0 1px 0 rgba(255, 255, 255, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
         
-        /* Enhanced Typography */
+        /* Enhanced Typography - MOBILE OPTIMIZED */
         h2 {
-            font-size: 3em;
-            margin-bottom: 35px;
+            font-size: 2.2em;
+            margin-bottom: 25px;
             font-weight: 800;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
             -webkit-background-clip: text;
@@ -255,6 +250,7 @@
             position: relative;
             animation: gradientShift 5s ease infinite;
             background-size: 200% 200%;
+            line-height: 1.2;
         }
         
         @keyframes gradientShift {
@@ -271,28 +267,28 @@
         }
         
         p {
-            font-size: 1.2em;
-            line-height: 2;
-            margin-bottom: 24px;
+            font-size: 1.05em;
+            line-height: 1.8;
+            margin-bottom: 20px;
             font-weight: 300;
             position: relative;
         }
         
-        /* Image Gallery Section - UPGRADED */
+        /* Image Gallery Section - MOBILE OPTIMIZED */
         .image-section {
             background: linear-gradient(135deg, #2d3436 0%, #000000 100%);
         }
         
         .image-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-top: 50px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 30px;
         }
         
         .image-box {
             aspect-ratio: 1;
-            border-radius: 25px;
+            border-radius: 20px;
             overflow: hidden;
             background: linear-gradient(135deg, #2a2a3a, #1a1a2a);
             display: flex;
@@ -315,14 +311,8 @@
             z-index: 1;
         }
         
-        .image-box:hover {
-            transform: scale(1.08) rotate(2deg);
-            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.4);
-            border-color: rgba(102, 126, 234, 0.5);
-        }
-        
-        .image-box:hover::before {
-            opacity: 1;
+        .image-box:active {
+            transform: scale(0.95);
         }
         
         .image-box img {
@@ -332,10 +322,6 @@
             transition: transform 0.4s ease;
         }
         
-        .image-box:hover img {
-            transform: scale(1.1);
-        }
-        
         /* Final Message - UPGRADED */
         .final-section {
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #ff6b9d 100%);
@@ -343,9 +329,9 @@
         }
         
         .signature {
-            font-size: 2.2em;
+            font-size: 1.8em;
             font-weight: 700;
-            margin-top: 60px;
+            margin-top: 50px;
             font-style: italic;
             text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
             animation: signaturePulse 3s ease-in-out infinite;
@@ -356,29 +342,99 @@
             50% { transform: scale(1.03); }
         }
         
-        /* Responsive - UPGRADED */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.8em; }
-            .hero .subtitle { font-size: 1.3em; }
-            .emoji-big { font-size: 4.5em; }
-            h2 { font-size: 2.2em; }
-            p { font-size: 1.05em; line-height: 1.8; }
-            .content-box { padding: 40px; border-radius: 30px; }
-            .image-grid { grid-template-columns: 1fr; gap: 20px; }
-            .signature { font-size: 1.6em; }
-        }
-        
         /* Progress Indicator */
         .progress-bar {
             position: fixed;
             top: 0;
             left: 0;
             width: 0%;
-            height: 4px;
+            height: 3px;
             background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
             z-index: 9999;
             transition: width 0.1s ease;
             box-shadow: 0 2px 10px rgba(102, 126, 234, 0.6);
+        }
+        
+        /* Mobile Responsive - ENHANCED */
+        @media (max-width: 768px) {
+            section {
+                padding: 50px 15px;
+            }
+            
+            .hero h1 { 
+                font-size: 2.5em;
+                letter-spacing: -1px;
+            }
+            
+            .hero .subtitle { 
+                font-size: 1.2em; 
+            }
+            
+            .emoji-big { 
+                font-size: 4em; 
+            }
+            
+            h2 { 
+                font-size: 1.8em;
+                margin-bottom: 20px;
+            }
+            
+            p { 
+                font-size: 1em;
+                line-height: 1.7;
+                margin-bottom: 16px;
+            }
+            
+            .content-box { 
+                padding: 30px 20px;
+                border-radius: 25px;
+            }
+            
+            .image-grid { 
+                gap: 12px;
+                margin-top: 25px;
+            }
+            
+            .image-box {
+                border-radius: 15px;
+            }
+            
+            .signature { 
+                font-size: 1.5em;
+                margin-top: 40px;
+            }
+            
+            .scroll-indicator {
+                font-size: 1.8em;
+                bottom: 25px;
+            }
+        }
+        
+        /* Extra Small Screens */
+        @media (max-width: 375px) {
+            .hero h1 { 
+                font-size: 2.2em;
+            }
+            
+            .hero .subtitle { 
+                font-size: 1.1em; 
+            }
+            
+            h2 { 
+                font-size: 1.6em;
+            }
+            
+            p { 
+                font-size: 0.95em;
+            }
+            
+            .content-box {
+                padding: 25px 15px;
+            }
+            
+            .signature { 
+                font-size: 1.3em;
+            }
         }
     </style>
 </head>
@@ -479,9 +535,9 @@
                 💰 Gajinya naik terus (amiin!)<br>
                 🤝 Jangan lupa sama gw, tetep kontak-kontakan ya!</p>
                 
-                <p style="margin-top: 40px; font-size: 1.1em;">Bjir gw bakal kangen lu banget cuk. Lu senior paling gokil yang pernah gw kenal. Kapan-kapan kita ngopi bareng lagi ya, gw traktir deh!</p>
+                <p style="margin-top: 35px; font-size: 1.05em;">Bjir gw bakal kangen lu banget cuk. Lu senior paling gokil yang pernah gw kenal. Kapan-kapan kita ngopi bareng lagi ya, gw traktir deh!</p>
                 
-                <p style="margin-top: 30px; font-size: 1em;">Semangat terus di tempat baru! Jangan lupa kontak gw kalo butuh apa-apa. Atau kalo lu kangen sama gw juga boleh sih 😂</p>
+                <p style="margin-top: 25px; font-size: 0.95em;">Semangat terus di tempat baru! Jangan lupa kontak gw kalo butuh apa-apa. Atau kalo lu kangen sama gw juga boleh sih 😂</p>
                 
                 <div class="signature">
                     — Your Junior, Afaj (AZ) 🤙 —
@@ -525,17 +581,35 @@
             }
         });
 
-        // Parallax Effect for Images
-        window.addEventListener('scroll', () => {
-            const images = document.querySelectorAll('.image-box');
-            images.forEach(img => {
-                const rect = img.getBoundingClientRect();
-                const scrollPercent = (window.innerHeight - rect.top) / window.innerHeight;
-                if (scrollPercent > 0 && scrollPercent < 1) {
-                    img.style.transform = `translateY(${(1 - scrollPercent) * 20}px)`;
-                }
-            });
+        // Touch Swipe Support for Mobile
+        let touchStartY = 0;
+        let touchEndY = 0;
+        
+        document.addEventListener('touchstart', (e) => {
+            touchStartY = e.changedTouches[0].screenY;
         });
+        
+        document.addEventListener('touchend', (e) => {
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            if (touchStartY - touchEndY > swipeThreshold) {
+                // Swipe up
+                window.scrollBy({
+                    top: window.innerHeight,
+                    behavior: 'smooth'
+                });
+            } else if (touchEndY - touchStartY > swipeThreshold) {
+                // Swipe down
+                window.scrollBy({
+                    top: -window.innerHeight,
+                    behavior: 'smooth'
+                });
+            }
+        }
     </script>
 </body>
 </html>
