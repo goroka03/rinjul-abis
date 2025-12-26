@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buat Rinjul - Selamat Jalan Senior!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #0f0f0f;
+            color: #fff;
+            overflow-x: hidden;
+            height: 100vh;
+            overflow-y: scroll;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 10px;
+        }
+        
+        /* Snap Scroll Sections */
+        section {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+            position: relative;
+        }
+        
+        /* Hero Section - UPGRADED */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            flex-direction: column;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        /* Animated Background Particles */
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.15) 2px, transparent 2px),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 80px 80px, 120px 120px;
+            animation: drift 25s linear infinite;
+            opacity: 0.6;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05), transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes drift {
+            from { transform: translate(0, 0) rotate(0deg); }
+            to { transform: translate(80px, 80px) rotate(360deg); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(60px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .hero h1 {
+            font-size: 4.5em;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            letter-spacing: -2px;
+            animation: textGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes textGlow {
+            0%, 100% { text-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 20px rgba(255,255,255,0.2); }
+            50% { text-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 40px rgba(255,255,255,0.4); }
+        }
+        
+        .hero .subtitle {
+            font-size: 1.6em;
+            font-weight: 400;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            text-shadow: 0 4px 16px rgba(0,0,0,0.3);
+        }
+        
+        .emoji-big {
+            font-size: 6em;
+            margin-bottom: 30px;
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-25px) rotate(5deg); }
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            animation: bounce 2s infinite;
+            font-size: 2.5em;
+            opacity: 0.8;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+        }
+        
+        .scroll-indicator:hover {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(20px); }
+        }
+        
+        /* Section Styles - UPGRADED */
+        .section-light {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+            color: #2c3e50;
+        }
+        
+        .section-dark {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+        }
+        
+        .container {
+            max-width: 900px;
+            width: 100%;
+            animation: slideIn 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(80px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        /* Glassmorphism Card - UPGRADED */
+        .content-box {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            padding: 60px;
+            border-radius: 40px;
+            box-shadow: 
+                0 30px 80px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .content-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .content-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 40px 100px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+        
+        .section-light .content-box {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 
+                0 30px 80px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Enhanced Typography */
+        h2 {
+            font-size: 3em;
+            margin-bottom: 35px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+            position: relative;
+            animation: gradientShift 5s ease infinite;
+            background-size: 200% 200%;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .section-dark h2 {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #ffd89b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% 200%;
+        }
+        
+        p {
+            font-size: 1.2em;
+            line-height: 2;
+            margin-bottom: 24px;
+            font-weight: 300;
+            position: relative;
+        }
+        
+        /* Image Gallery Section - UPGRADED */
+        .image-section {
+            background: linear-gradient(135deg, #2d3436 0%, #000000 100%);
+        }
+        
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+        
+        .image-box {
+            aspect-ratio: 1;
+            border-radius: 25px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #2a2a3a, #1a1a2a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .image-box::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+        
+        .image-box:hover {
+            transform: scale(1.08) rotate(2deg);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.4);
+            border-color: rgba(102, 126, 234, 0.5);
+        }
+        
+        .image-box:hover::before {
+            opacity: 1;
+        }
+        
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        
+        .image-box:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Final Message - UPGRADED */
+        .final-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #ff6b9d 100%);
+            text-align: center;
+        }
+        
+        .signature {
+            font-size: 2.2em;
+            font-weight: 700;
+            margin-top: 60px;
+            font-style: italic;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            animation: signaturePulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes signaturePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+        
+        /* Responsive - UPGRADED */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8em; }
+            .hero .subtitle { font-size: 1.3em; }
+            .emoji-big { font-size: 4.5em; }
+            h2 { font-size: 2.2em; }
+            p { font-size: 1.05em; line-height: 1.8; }
+            .content-box { padding: 40px; border-radius: 30px; }
+            .image-grid { grid-template-columns: 1fr; gap: 20px; }
+            .signature { font-size: 1.6em; }
+        }
+        
+        /* Progress Indicator */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            z-index: 9999;
+            transition: width 0.1s ease;
+            box-shadow: 0 2px 10px rgba(102, 126, 234, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="emoji-big">😭✨</div>
+            <h1>BJIR RINJUL CABUT!</h1>
+            <p class="subtitle">Gw Bakal Kangen Lu Senior 😢</p>
+        </div>
+        <div class="scroll-indicator">↓</div>
+    </section>
+
+    <!-- Opening Message -->
+    <section class="section-light">
+        <div class="container">
+            <div class="content-box">
+                <h2>Anjay Sedih Cuk 😭</h2>
+                <p>Yo Rinjul,</p>
+                <p>Bjir gw gak nyangka lu beneran cabut dari sini. Gw kira becanda doang pas lu bilang mau resign kemaren. Ternyata serius anjir!</p>
+                <p>Siapa nanti yang bakal gw repotinn kalo lagi butuh bantuan? Siapa yang bakal gw ganggu kalo lagi gabut? 😭</p>
+                <p>Sedih banget cuk, beneran. Tapi ya gw ngerti sih, lu emang pantas dapet yang lebih bagus. Gw support lu 100% kok!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Memories Section with Images -->
+    <section class="section-dark image-section">
+        <div class="container">
+            <div class="content-box">
+                <h2>Kenangan Bareng Lu 📸</h2>
+                <p>Bjir gw inget banget momen-momen gokil pas kita kerja bareng dulu. Ga nyangka udah sampe sini aja waktunya...</p>
+                
+                <div class="image-grid">
+                    <div class="image-box">
+                        <img src="foto1.jpeg" alt="Kenangan 1">
+                    </div>
+                    <div class="image-box">
+                        <img src="foto2.jpeg" alt="Kenangan 2">
+                    </div>
+                    <div class="image-box">
+                        <img src="foto3.jpeg" alt="Kenangan 3">
+                    </div>
+                    <div class="image-box">
+                        <img src="foto4.jpeg" alt="Kenangan 4">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appreciation Section -->
+    <section class="section-light">
+        <div class="container">
+            <div class="content-box">
+                <h2>Yang Gw Apresiasi Dari Lu 💎</h2>
+                <p>Rinjal, lu tuh senior yang paling asik sedunia anjir. Serius gw bilang:</p>
+                <p>✨ Lu selalu bantuin gw kalo gw lagi bingung kerja<br>
+                💪 Ga pernah ngomel-ngomel meski gw sering nanya hal bodoh<br>
+                😂 Lu bikin suasana kantor jadi ga tegang, seru banget<br>
+                🎯 Lu ngajarin gw banyak hal yang sekarang gw pake terus<br>
+                🤝 Lu treat gw kayak temen, bukan junior biasa</p>
+                <p>Bjir pokoknya lu tuh senior terbaik yang pernah gw punya. Ga ada yang bisa ngalahin lu cuk!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- More Alay Section -->
+    <section class="section-dark">
+        <div class="container">
+            <div class="content-box">
+                <h2>Gw Bakal Kangen Banget Anjir 😢</h2>
+                <p>Bjir Rinjul, lu tau ga sih betapa sedihnya gw pas tau lu resign? Gw sampe bengong sendiri anjay!</p>
+                <p>Siapa nanti yang bakal:</p>
+                <p>🤔 Gw tanyain kalo lagi stuck di kerjaan<br>
+                😂 Gw ajakin ngobrol ngalor ngidul pas istirahat<br>
+                🍕 Gw ajakin makan siang bareng sambil ngomongin hal random<br>
+                💻 Gw minta bantuan debug kalo kode gw error mulu<br>
+                🎮 Gw ceritain hal-hal goblok yang gw lakuin</p>
+                <p>Anjir gw bingung banget nanti kalo lu udah ga ada. Tapi ya gw seneng sih lu dapet kesempatan lebih bagus. Lu emang pantas Senior!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Wishes -->
+    <section class="final-section">
+        <div class="container">
+            <div class="content-box">
+                <h2>Pesan Terakhir Gw 🌟</h2>
+                <p>Rinjul, gw doain lu:</p>
+                <p>🚀 Makin sukses di tempat baru<br>
+                💼 Dapet bos yang ga nyebelin (beda sama gw 😂)<br>
+                🎉 Selalu sehat dan happy<br>
+                💰 Gajinya naik terus (amiin!)<br>
+                🤝 Jangan lupa sama gw, tetep kontak-kontakan ya!</p>
+                
+                <p style="margin-top: 40px; font-size: 1.1em;">Bjir gw bakal kangen lu banget cuk. Lu senior paling gokil yang pernah gw kenal. Kapan-kapan kita ngopi bareng lagi ya, gw traktir deh!</p>
+                
+                <p style="margin-top: 30px; font-size: 1em;">Semangat terus di tempat baru! Jangan lupa kontak gw kalo butuh apa-apa. Atau kalo lu kangen sama gw juga boleh sih 😂</p>
+                
+                <div class="signature">
+                    — Your Junior, Afaj (AZ) 🤙 —
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Progress Bar Animation
+        window.addEventListener('scroll', () => {
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight - windowHeight;
+            const scrolled = window.scrollY;
+            const progress = (scrolled / documentHeight) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        });
+
+        // Smooth Scroll on Arrow Click
+        document.querySelector('.scroll-indicator').addEventListener('click', () => {
+            window.scrollTo({
+                top: window.innerHeight,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Keyboard Navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                window.scrollBy({
+                    top: window.innerHeight,
+                    behavior: 'smooth'
+                });
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                window.scrollBy({
+                    top: -window.innerHeight,
+                    behavior: 'smooth'
+                });
+            }
+        });
+
+        // Parallax Effect for Images
+        window.addEventListener('scroll', () => {
+            const images = document.querySelectorAll('.image-box');
+            images.forEach(img => {
+                const rect = img.getBoundingClientRect();
+                const scrollPercent = (window.innerHeight - rect.top) / window.innerHeight;
+                if (scrollPercent > 0 && scrollPercent < 1) {
+                    img.style.transform = `translateY(${(1 - scrollPercent) * 20}px)`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
