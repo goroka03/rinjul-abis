@@ -918,6 +918,134 @@
             box-shadow: 0 2px 15px rgba(102, 126, 234, 0.8);
         }
         
+		/* ============ BTS BUTTON ============ */
+.bts-button-container {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.bts-toggle-btn {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: 800;
+    padding: 18px 45px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.bts-toggle-btn:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 20px 60px rgba(102, 126, 234, 0.7);
+    background: linear-gradient(135deg, #764ba2, #f093fb);
+}
+
+.bts-toggle-btn:active {
+    transform: translateY(-3px) scale(1.02);
+}
+
+/* ============ BTS SECTIONS ============ */
+.bts-section {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.bts-section.active {
+    display: flex;
+    opacity: 1;
+}
+
+.bts-story-item {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(240, 147, 251, 0.4);
+    border-radius: 25px;
+    padding: 30px;
+    margin-top: 25px;
+    animation: btsSlideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes btsSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.section-light .bts-story-item {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(102, 126, 234, 0.4);
+}
+
+.bts-media-box {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 20px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #2a2a3a, #1a1a2a);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.bts-media-box img,
+.bts-media-box video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.bts-media-placeholder {
+    color: #666;
+    font-size: 3em;
+}
+
+.bts-title {
+    font-size: 1.8em;
+    font-weight: 800;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-light .bts-title {
+    background: linear-gradient(135deg, #764ba2, #f093fb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.bts-text {
+    font-size: 1.05em;
+    line-height: 1.8;
+    color: #cbd5e1;
+}
+
+.section-light .bts-text {
+    color: #334155;
+}
+
+.bts-emoji {
+    font-size: 1.3em;
+    margin-right: 5px;
+}
+
         /* ============ RESPONSIVE ============ */
         @media (max-width: 768px) {
             section {
@@ -1301,9 +1429,218 @@
                 <div class="signature">
                     — Your Junior, Afaj (AZ) 🤙 —
                 </div>
+				                <!-- BTS Toggle Button -->
+                <div class="bts-button-container">
+                    <button class="bts-toggle-btn" id="btsToggleBtn" onclick="toggleBTS()">
+                        🎬 LIHAT BEHIND THE SCENES 🎬
+                    </button>
+                </div>
+
+				
             </div>
         </div>
     </section>
+
+            <!-- ============ BTS SLIDE 1: PESANAN PERTAMA TERLAMBAT ============ -->
+    <section class="section-dark bts-section" id="bts1">
+        <div class="floating-ornament ornament-1">📦</div>
+        <div class="floating-ornament ornament-2">😤</div>
+        <div class="floating-ornament ornament-3">💢</div>
+        
+        <div class="container">
+            <div class="content-box">
+                <div class="bts-story-item">
+                    <div class="bts-media-box" style="width: 100%; max-width: 500px; margin: 0 auto 20px; aspect-ratio: auto; height: auto;">
+                        <img src="bts 1.jpeg" alt="Pesanan Pertama Terhambar" style="width: 100%; height: auto; object-fit: contain;">
+                    </div>
+                    <h3 class="bts-title"><span class="bts-emoji">😤</span>Pesanan Pertama Terlambat!</h3>
+                    <p class="bts-text">
+                        Jadi gue pesan figur nailong yang kecil, dino kuning gitu loh—tanggal 13 Desember, tapi sampai tanggal 24 Desember kok nggak nyampe-nyampe. <strong>Anjir, kesel banget kan</strong>, pesanan pertama ini ngilang aja gitu. Gw udah nunggu lama banget bro, tiap hari cek tracking terus. Akhirnya ya udah, gw pasrah aja sih. Paket ilang, duit ilang, hati juga ilang wkwkwk 😭
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ BTS SLIDE 2: PESAN ULANG DAN KECEPATAN NGEGAS ============ -->
+    <section class="section-light bts-section" id="bts2">
+        <div class="floating-ornament ornament-1">🚀</div>
+        <div class="floating-ornament ornament-2">⚡</div>
+        <div class="floating-ornament ornament-3">💨</div>
+        
+        <div class="container">
+            <div class="content-box">
+                <div class="bts-story-item">
+                    <div class="bts-media-box" style="width: 100%; max-width: 500px; margin: 0 auto 20px; aspect-ratio: auto; height: auto;">
+                        <img src="bts 2.jpeg" alt="Pesan Ulang Ngebut" style="width: 100%; height: auto; object-fit: contain;">
+                    </div>
+                    <h3 class="bts-title"><span class="bts-emoji">⚡</span>Pesan Ulang, Ngebut Banget!</h3>
+                    <p class="bts-text">
+                        Akhirnya gue order lagi barang yang lebih gede tanggal 24 Desember. Eh, yang ini <strong>cepet banget nyampe</strong>! Cuma dua hari, tanggal 26 Desember udah mendarat. <strong>Anjir, ngebut banget sampenya</strong>. Gw sampe kaget bro, kirain bakal lama lagi kayak yang kemarin. Ternyata kurir nya lagi mood bagus kayaknya wkwkwk. Untung aja sih, jadi masih sempet buat wrapping! 🎁
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ BTS SLIDE 3: MOTOR BOCOR ============ -->
+    <section class="section-dark bts-section" id="bts3">
+        <div class="floating-ornament ornament-1">🏍️</div>
+        <div class="floating-ornament ornament-2">💥</div>
+        <div class="floating-ornament ornament-3">😩</div>
+        
+        <div class="container">
+            <div class="content-box">
+                <div class="bts-story-item">
+                    <div class="bts-media-box" style="width: 100%; max-width: 500px; margin: 0 auto 20px; aspect-ratio: auto; height: auto;">
+                        <img src="bts 3.jpeg" alt="Motor Bocor" style="width: 100%; height: auto; object-fit: contain;">
+                    </div>
+                    <h3 class="bts-title"><span class="bts-emoji">😩</span>Motor Bocor bangke!</h3>
+                    <p class="bts-text">
+                        Gue udah semangat banget mau beli perlengkapan kado. Tapi tiba-tiba motor bocor, <strong>bangke, bejir</strong>! Kesel banget bro. Akhirnya harus ganti ban dulu, servis dulu, ya lumayan bikin ngos-ngosan. Tapi ya gimana lagi, mau ngasih kado harus jalan dulu kan motornya wkwkwk. Sabar ya diri sendiri 😤💸
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ BTS SLIDE 4: BELANJA PERLENGKAPAN ============ -->
+    <section class="section-light bts-section" id="bts4">
+        <div class="floating-ornament ornament-1">🎀</div>
+        <div class="floating-ornament ornament-2">🎨</div>
+        <div class="floating-ornament ornament-3">💝</div>
+        
+        <div class="container">
+            <div class="content-box">
+                <div class="bts-story-item">
+                    <div class="bts-media-box">
+                        <img src="bts 4.jpeg" alt="Belanja Perlengkapan">
+                    </div>
+                    <h3 class="bts-title"><span class="bts-emoji">🤔</span>Galau Milih yang Lucu</h3>
+                    <p class="bts-text">
+                        Pas beli kertas kado, gue sempet galau. <strong>Ini yang lucu yang mana ya, yang cocok buat cewek yang mana ya</strong>, kasih love-love dikit apa gimana gitu. Bingung sendiri, tapi seru juga sih. Di toko kertas kado nya gw sampe bolak-balik liat warna dan motif. Akhirnya gw pilih yang pink cute gitu, semoga dia suka deh wkwkwk 🎀
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ BTS SLIDE 5: PACKING KADO ============ -->
+    <section class="section-dark bts-section" id="bts5">
+        <div class="floating-ornament ornament-1">📦</div>
+        <div class="floating-ornament ornament-2">😅</div>
+        <div class="floating-ornament ornament-3">✂️</div>
+        
+        <div class="container">
+            <div class="content-box">
+                <div class="bts-story-item">
+                    <div class="bts-media-box" style="width: 100%; max-width: 500px; margin: 0 auto 20px; aspect-ratio: auto; height: auto;">
+                        <video controls autoplay muted style="width: 100%; height: auto; object-fit: contain;">
+                            <source src="bts 5.mp4" type="video/mp4">
+                            Browser tidak support video
+                        </video>
+                    </div>
+                    <h3 class="bts-title"><span class="bts-emoji">😂</span>Packing Kocak Banget!</h3>
+                    <p class="bts-text">
+                        Pas mulai packing, gue ngerasa <strong>anjir gue jago banget nih, keren banget</strong>. Tapi pas beneran ngewrap kado, kok jadinya malah berantakan. Kayak, <strong>"What the hell, men?"</strong> Tapi yaudah, lucu-lucuan aja, sambil ketawa-ketawa sendiri. Kertas kadony sobek-sobek, selotip dimana-mana, tangan gw lengket terus wkwkwk. Tapi akhirnya jadi juga kok, walau agak kriwil 😂🎁
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ BTS SLIDE 6: BIKIN LANDING PAGE ============ -->
+    <section class="section-light bts-section" id="bts6">
+        <div class="floating-ornament ornament-1">💻</div>
+        <div class="floating-ornament ornament-2">🚀</div>
+        <div class="floating-ornament ornament-3">✨</div>
+        
+        <div class="container">
+            <div class="content-box">
+                <div class="bts-story-item">
+                    <div class="bts-media-box" style="width: 100%; max-width: 500px; margin: 0 auto 20px; aspect-ratio: auto; height: auto;">
+                        <img src="bts 6.jpeg" alt="Bikin Landing Page" style="width: 100%; height: auto; object-fit: contain;">
+                    </div>
+                    <h3 class="bts-title"><span class="bts-emoji">🔥</span>Bikin Landing Page Keren Parah!</h3>
+                    <p class="bts-text">
+                        Nah, pas bikin landing page, gue ngerasa <strong>wah ini keren banget, gila</strong>. Digital gift card-nya bikin gue bangga sendiri. <strong>Bejir, keren abis pokoknya</strong>! Gw coding sampe tengah malem bro di bantu ai juga sih wkwkwkwkw, animasi nya gw bikin smooth banget, warna-warna nya aesthetic. Ini website yang lu lagi baca sekarang adalah bukti keringat gw wkwkwk. Semoga dia suka ya 💻✨
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ BTS SLIDE 7: KULIAH TENGAH MALAM & KENA PRANK ============ -->
+    <section class="section-dark bts-section" id="bts7">
+        <div class="floating-ornament ornament-1">📚</div>
+        <div class="floating-ornament ornament-2">😰</div>
+        <div class="floating-ornament ornament-3">☎️</div>
+        
+        <div class="container">
+            <div class="content-box">
+                <div class="bts-story-item">
+                    <div class="bts-media-box" style="width: 100%; max-width: 500px; margin: 0 auto 20px; aspect-ratio: auto; height: auto;">
+                        <video controls autoplay muted style="width: 100%; height: auto; object-fit: contain;">
+                            <source src="bts 7.mp4" type="video/mp4">
+                            Browser tidak support video
+                        </video>
+                    </div>
+                    <h3 class="bts-title"><span class="bts-emoji">😱</span>KULIAH TIME!!!</h3>
+                    <p class="bts-text">
+                        Pas kuliah gue di halang pamdal anjir, katanya nggak ada kuliah. <strong>Untungnya gue cek lagi, telepon dosen, ternyata dapat izin</strong>. Gue sempet ngerasa nggak enak juga karena ngajak temen cewek buat dateng, karena gw aga bego, tapi akhirnya semua beres. Deg-degan banget bro waktu itu, takut dia marah. Tapi untungnya dia santai aja dan malah ketawa wkwkwk. Fiuh! 😅📚
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ BTS SLIDE 8: HARI TERAKHIR - CETAK GIFT CARD ============ -->
+    <section class="section-light bts-section" id="bts8">
+        <div class="floating-ornament ornament-1">🎉</div>
+        <div class="floating-ornament ornament-2">✅</div>
+        <div class="floating-ornament ornament-3">💝</div>
+        
+        <div class="container">
+            <div class="content-box">
+                <div class="bts-story-item">
+                    <div class="bts-media-box" style="width: 100%; max-width: 500px; margin: 0 auto 20px; aspect-ratio: auto; height: auto;">
+                        <img src="bts 8.jpeg" alt="Hari Terakhir Cetak Gift Card" style="width: 100%; height: auto; object-fit: contain;">
+                    </div>
+                    <h3 class="bts-title"><span class="bts-emoji">🎉</span>Akhirnya Kelar Anjay!</h3>
+                    <p class="bts-text">
+                        Nah, hari terakhir tanggal 27 Desember, gue tinggal nge-print barcode-nya, laminating, dan beres. <strong>Akhirnya jadi juga, tinggal kasih ke elu</strong>. <strong>Anjir, lega banget</strong>! Semua perjuangan dari awal sampe akhir worth it banget bro. Dari paket ilang, motor bocor, sampe coding asik, semuanya terbayar. Semoga lu suka sama kado gw! 💝✨🎁
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+       <!-- ============ BTS SLIDE 9: BONUS - VIDEO SPECIAL ============ -->
+    <section class="section-dark bts-section" id="bts9">
+        <div class="floating-ornament ornament-1">🎁</div>
+        <div class="floating-ornament ornament-2">💝</div>
+        <div class="floating-ornament ornament-3">✨</div>
+        
+        <div class="container">
+            <div class="content-box">
+                <div class="bts-story-item">
+                    <div class="bts-media-box" style="width: 100%; max-width: 500px; margin: 0 auto 20px; aspect-ratio: auto; height: auto;">
+                        <video controls autoplay style="width: 100%; height: auto; object-fit: contain;">
+                            <source src="bts 9.mp4" type="video/mp4">
+                            Browser tidak support video
+                        </video>
+                    </div>
+                    <h3 class="bts-title"><span class="bts-emoji">🎬</span>Bonus Special Message!</h3>
+                    <p class="bts-text">
+                        Ada yang special buat lu Senior! Enjoy! 💕✨
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
 
     <script>
         // ============ PROGRESS BAR ============
@@ -1487,6 +1824,47 @@
         console.log('%c🚀 Selamat Jalan Rinjul! 🚀', 'font-size: 30px; color: #667eea; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);');
         console.log('%cWebsite ini dibuat dengan ❤️ oleh Afaj (AZ)', 'font-size: 14px; color: #f093fb;');
         console.log('%cSemangat di tempat baru ya Senior! 💪', 'font-size: 16px; color: #764ba2; font-weight: bold;');
-    </script>
+            // ============ BTS TOGGLE FUNCTIONALITY ============
+        let btsActive = false;
+        
+        function toggleBTS() {
+            const btsToggleBtn = document.getElementById('btsToggleBtn');
+            const btsSections = document.querySelectorAll('.bts-section');
+            
+            btsActive = !btsActive;
+            
+            if (btsActive) {
+                // Show BTS sections
+                btsSections.forEach((section, index) => {
+                    setTimeout(() => {
+                        section.classList.add('active');
+                    }, index * 100);
+                });
+                
+                // Change button text
+                btsToggleBtn.textContent = '❌ TUTUP BEHIND THE SCENES ❌';
+                btsToggleBtn.style.background = 'linear-gradient(135deg, #f5576c, #ff6b9d)';
+                
+                // Scroll to first BTS section
+                setTimeout(() => {
+                    document.getElementById('bts1').scrollIntoView({ behavior: 'smooth' });
+                }, 300);
+            } else {
+                // Hide BTS sections
+                btsSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Change button back
+                btsToggleBtn.textContent = '🎬 LIHAT BEHIND THE SCENES 🎬';
+                btsToggleBtn.style.background = 'linear-gradient(135deg, #667eea, #764ba2)';
+                
+                // Scroll back to final section
+                document.querySelector('.final-section').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+	
+	</script>
 </body>
 </html>
