@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buat Rinjul - Selamat Jalan Senior!</title>
+    <title>Rinjul Ultimate - Selamat Jalan Senior!</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
         
@@ -28,7 +28,6 @@
             overflow-y: scroll;
         }
         
-        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -42,7 +41,6 @@
             border-radius: 10px;
         }
         
-        /* Snap Scroll Sections */
         section {
             min-height: 100vh;
             scroll-snap-align: start;
@@ -51,9 +49,10 @@
             justify-content: center;
             padding: 60px 20px;
             position: relative;
+            overflow: hidden;
         }
         
-        /* Hero Section - UPGRADED */
+        /* ============ HERO SECTION ============ */
         .hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
             flex-direction: column;
@@ -61,7 +60,6 @@
             overflow: hidden;
         }
         
-        /* Animated Background Particles */
         .hero::before {
             content: '';
             position: absolute;
@@ -167,7 +165,29 @@
             50% { transform: translateY(20px); }
         }
         
-        /* Section Styles - UPGRADED */
+        /* ============ ORNAMENT STYLES ============ */
+        .floating-ornament {
+            position: absolute;
+            font-size: 3em;
+            opacity: 0.7;
+            animation: float-random 6s ease-in-out infinite;
+            pointer-events: none;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+        }
+        
+        @keyframes float-random {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-40px) rotate(10deg); }
+        }
+        
+        .ornament-1 { top: 10%; left: 8%; animation-delay: 0s; }
+        .ornament-2 { top: 15%; right: 10%; animation-delay: 1s; }
+        .ornament-3 { bottom: 15%; left: 5%; animation-delay: 2s; }
+        .ornament-4 { bottom: 20%; right: 8%; animation-delay: 1.5s; }
+        .ornament-5 { top: 50%; left: 3%; animation-delay: 0.5s; }
+        .ornament-6 { top: 40%; right: 5%; animation-delay: 1.8s; }
+        
+        /* ============ SECTION STYLES ============ */
         .section-light {
             background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
             color: #2c3e50;
@@ -182,6 +202,8 @@
             max-width: 900px;
             width: 100%;
             animation: slideIn 1s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 2;
         }
         
         @keyframes slideIn {
@@ -195,7 +217,7 @@
             }
         }
         
-        /* Glassmorphism Card - MOBILE OPTIMIZED */
+        /* ============ GLASSMORPHISM CARD ============ */
         .content-box {
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(20px) saturate(180%);
@@ -237,7 +259,7 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
         
-        /* Enhanced Typography - MOBILE OPTIMIZED */
+        /* ============ TYPOGRAPHY ============ */
         h2 {
             font-size: 2.2em;
             margin-bottom: 25px;
@@ -274,7 +296,41 @@
             position: relative;
         }
         
-        /* Image Gallery Section - MOBILE OPTIMIZED */
+        .alay-text {
+            font-style: italic;
+            color: #ff6b9d;
+            font-weight: 600;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #ff6b9d, #f5576c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+        
+        /* ============ SECTION 2 ORNAMENTS ============ */
+        .section-2-ornament {
+            position: absolute;
+            font-size: 2.5em;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .tear-drop-1 { top: 15%; right: 5%; animation: fall 3s ease-in infinite; }
+        .tear-drop-2 { top: 30%; left: 8%; animation: fall 3.5s ease-in infinite; }
+        .tear-drop-3 { top: 50%; right: 10%; animation: fall 4s ease-in infinite; }
+        .tear-drop-4 { top: 70%; left: 5%; animation: fall 3.2s ease-in infinite; }
+        .tear-drop-5 { top: 35%; right: 15%; animation: fall 3.8s ease-in infinite; }
+        
+        @keyframes fall {
+            from { transform: translateY(-100px) rotate(0deg); opacity: 0.2; }
+            to { transform: translateY(100px) rotate(180deg); opacity: 0; }
+        }
+        
+        /* ============ IMAGE GALLERY SECTION ============ */
         .image-section {
             background: linear-gradient(135deg, #2d3436 0%, #000000 100%);
         }
@@ -311,6 +367,16 @@
             z-index: 1;
         }
         
+        .image-box:hover::before {
+            opacity: 1;
+        }
+        
+        .image-box:hover {
+            transform: scale(1.08) translateY(-10px);
+            box-shadow: 0 20px 50px rgba(240, 147, 251, 0.4);
+            border-color: rgba(240, 147, 251, 0.5);
+        }
+        
         .image-box:active {
             transform: scale(0.95);
         }
@@ -322,10 +388,320 @@
             transition: transform 0.4s ease;
         }
         
-        /* Final Message - UPGRADED */
+        .image-box:hover img {
+            transform: scale(1.1);
+        }
+        
+        .image-placeholder {
+            color: #666;
+            font-size: 3em;
+        }
+        
+        /* ============ SECTION 3 ORNAMENTS ============ */
+        .memory-sparkle {
+            position: absolute;
+            font-size: 1.5em;
+            animation: sparkle 2s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+        
+        .sparkle-1 { top: 20%; left: 10%; animation-delay: 0s; }
+        .sparkle-2 { top: 60%; right: 15%; animation-delay: 0.5s; }
+        .sparkle-3 { bottom: 25%; left: 20%; animation-delay: 1s; }
+        .sparkle-4 { bottom: 40%; right: 10%; animation-delay: 1.5s; }
+        .sparkle-5 { top: 40%; left: 3%; animation-delay: 0.8s; }
+        .sparkle-6 { top: 70%; right: 5%; animation-delay: 1.2s; }
+        
+        /* ============ SECTION 4 APPRECIATION ============ */
+        .appreciation-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .appreciation-card {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.25), rgba(118, 75, 162, 0.25));
+            border: 2px solid rgba(102, 126, 234, 0.4);
+            padding: 25px 20px;
+            border-radius: 20px;
+            text-align: center;
+            animation: cardPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            opacity: 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        @keyframes cardPop {
+            from {
+                opacity: 0;
+                transform: scale(0.5) translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        
+        .appreciation-card:nth-child(1) { animation-delay: 0.1s; }
+        .appreciation-card:nth-child(2) { animation-delay: 0.3s; }
+        .appreciation-card:nth-child(3) { animation-delay: 0.5s; }
+        .appreciation-card:nth-child(4) { animation-delay: 0.2s; }
+        .appreciation-card:nth-child(5) { animation-delay: 0.4s; }
+        .appreciation-card:nth-child(6) { animation-delay: 0.6s; }
+        
+        .appreciation-card:hover {
+            transform: translateY(-15px);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.4), rgba(118, 75, 162, 0.4));
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.4);
+            border-color: rgba(102, 126, 234, 0.8);
+        }
+        
+        .appreciation-card-icon {
+            font-size: 2.5em;
+            margin-bottom: 12px;
+            animation: pulse-icon 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-icon {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+        
+        .appreciation-card-title {
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.1em;
+        }
+        
+        .appreciation-card-text {
+            font-size: 0.95em;
+            color: #334155;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+        
+        .section-dark .appreciation-card-text {
+            color: #cbd5e1;
+        }
+        
+        /* ============ SECTION 5 MEMORIES ============ */
+        .memory-ornament {
+            position: absolute;
+            font-size: 3em;
+            opacity: 0.6;
+            animation: float-random 8s ease-in-out infinite;
+            pointer-events: none;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2));
+        }
+        
+        .mem-ornament-1 { top: 10%; left: 5%; animation-delay: 0s; }
+        .mem-ornament-2 { top: 20%; right: 8%; animation-delay: 1s; }
+        .mem-ornament-3 { bottom: 15%; right: 5%; animation-delay: 2s; }
+        .mem-ornament-4 { bottom: 25%; left: 8%; animation-delay: 1.5s; }
+        .mem-ornament-5 { top: 60%; left: 3%; animation-delay: 0.7s; }
+        
+        /* ============ SECTION 6 GAME ============ */
+        .game-container {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(240, 147, 251, 0.4);
+            border-radius: 30px;
+            padding: 50px 30px;
+            margin-top: 25px;
+            text-align: center;
+            animation: slideIn 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .game-title {
+            font-size: 1.5em;
+            font-weight: 800;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 5s ease infinite;
+            background-size: 200% 200%;
+        }
+        
+        #heart {
+            font-size: 5em;
+            cursor: pointer;
+            user-select: none;
+            animation: heartbeat-idle 1.2s ease-in-out infinite;
+            transition: transform 0.1s ease;
+            filter: drop-shadow(0 10px 30px rgba(240, 147, 251, 0.5));
+        }
+        
+        @keyframes heartbeat-idle {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        #heart:active {
+            animation: heartbeat-click 0.5s ease-out;
+        }
+        
+        @keyframes heartbeat-click {
+            0% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+        
+        .score-display {
+            font-size: 2.2em;
+            margin-top: 30px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: scoreUpdate 0.5s ease-out;
+        }
+        
+        @keyframes scoreUpdate {
+            from {
+                transform: scale(1.3) rotate(10deg);
+                opacity: 0.5;
+            }
+            to {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+        
+        .game-instruction {
+            font-size: 1.1em;
+            color: #cbd5e1;
+            margin-top: 20px;
+            font-style: italic;
+            font-weight: 500;
+        }
+        
+        .progress-bar-game {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin-top: 25px;
+            overflow: hidden;
+            border: 1px solid rgba(240, 147, 251, 0.3);
+        }
+        
+        .progress-bar-game-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 10px;
+        }
+        
+        /* ============ PARTICLE EFFECT ============ */
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            font-size: 1.5em;
+            animation: particleFloat 1s ease-out forwards;
+            z-index: 1000;
+        }
+        
+        @keyframes particleFloat {
+            from {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+            to {
+                opacity: 0;
+                transform: translate(var(--tx), var(--ty)) scale(0.5);
+            }
+        }
+        
+        /* ============ FINAL SECTION ============ */
         .final-section {
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #ff6b9d 100%);
             text-align: center;
+        }
+        
+        .final-ornament {
+            position: absolute;
+            font-size: 3.5em;
+            opacity: 0.5;
+            animation: float-random 7s ease-in-out infinite;
+            pointer-events: none;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2));
+        }
+        
+        .final-ornament-1 { top: 5%; left: 8%; animation-delay: 0s; }
+        .final-ornament-2 { top: 15%; right: 10%; animation-delay: 1s; }
+        .final-ornament-3 { bottom: 15%; left: 5%; animation-delay: 2s; }
+        .final-ornament-4 { bottom: 20%; right: 8%; animation-delay: 1.5s; }
+        
+        .wishes-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .wish-item {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: wishAppear 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            opacity: 0;
+        }
+        
+        @keyframes wishAppear {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .wish-item:nth-child(1) { animation-delay: 0.1s; }
+        .wish-item:nth-child(2) { animation-delay: 0.3s; }
+        .wish-item:nth-child(3) { animation-delay: 0.5s; }
+        .wish-item:nth-child(4) { animation-delay: 0.7s; }
+        .wish-item:nth-child(5) { animation-delay: 0.9s; }
+        .wish-item:nth-child(6) { animation-delay: 1.1s; }
+        
+        .wish-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .wish-icon {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            animation: wish-bounce 1s ease-in-out infinite;
+        }
+        
+        @keyframes wish-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .wish-text {
+            font-size: 1em;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 600;
         }
         
         .signature {
@@ -342,20 +718,97 @@
             50% { transform: scale(1.03); }
         }
         
-        /* Progress Indicator */
+        /* ============ CONFETTI ============ */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            pointer-events: none;
+            z-index: 1000;
+            border-radius: 50%;
+        }
+        
+        @keyframes confetti-fall {
+            to {
+                opacity: 0;
+                transform: translateY(500px) rotate(720deg);
+            }
+        }
+        
+        /* ============ AUDIO CONTROL ============ */
+        .audio-control {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1001;
+            background: rgba(102, 126, 234, 0.9);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            animation: pulse-button 2s ease-in-out infinite;
+        }
+        
+        .audio-control:hover {
+            transform: scale(1.1);
+            background: rgba(118, 75, 162, 0.95);
+        }
+        
+        .audio-control:active {
+            transform: scale(0.95);
+        }
+        
+        @keyframes pulse-button {
+            0%, 100% { box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4); }
+            50% { box-shadow: 0 10px 30px rgba(102, 126, 234, 0.8); }
+        }
+        
+        .audio-icon {
+            font-size: 1.8em;
+        }
+        
+        .music-info {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 12px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            color: #fff;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            max-width: 200px;
+            text-align: center;
+            z-index: 1001;
+        }
+        
+        .audio-control:hover ~ .music-info {
+            opacity: 1;
+        }
+        
+        /* ============ PROGRESS BAR ============ */
         .progress-bar {
             position: fixed;
             top: 0;
             left: 0;
             width: 0%;
-            height: 3px;
-            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #f5576c);
             z-index: 9999;
             transition: width 0.1s ease;
-            box-shadow: 0 2px 10px rgba(102, 126, 234, 0.6);
+            box-shadow: 0 2px 15px rgba(102, 126, 234, 0.8);
         }
         
-        /* Mobile Responsive - ENHANCED */
+        /* ============ RESPONSIVE ============ */
         @media (max-width: 768px) {
             section {
                 padding: 50px 15px;
@@ -399,6 +852,11 @@
                 border-radius: 15px;
             }
             
+            .appreciation-cards,
+            .wishes-container {
+                grid-template-columns: 1fr;
+            }
+            
             .signature { 
                 font-size: 1.5em;
                 margin-top: 40px;
@@ -408,9 +866,31 @@
                 font-size: 1.8em;
                 bottom: 25px;
             }
+            
+            .floating-ornament {
+                font-size: 2em;
+            }
+            
+            .game-container {
+                padding: 40px 20px;
+            }
+            
+            .audio-control {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.5em;
+            }
+            
+            .music-info {
+                bottom: 80px;
+                right: 20px;
+                max-width: 150px;
+                font-size: 0.85em;
+            }
         }
         
-        /* Extra Small Screens */
         @media (max-width: 375px) {
             .hero h1 { 
                 font-size: 2.2em;
@@ -435,6 +915,10 @@
             .signature { 
                 font-size: 1.3em;
             }
+            
+            .floating-ornament {
+                font-size: 1.8em;
+            }
         }
     </style>
 </head>
@@ -442,8 +926,26 @@
     <!-- Progress Bar -->
     <div class="progress-bar" id="progressBar"></div>
 
-    <!-- Hero Section -->
+    <!-- Audio Control Button -->
+    <div class="audio-control" id="audioControl" title="Toggle Music">
+        <span class="audio-icon">🎵</span>
+    </div>
+    <div class="music-info" id="musicInfo">Click to play music 🎶</div>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="lagu.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- ============ SLIDE 1: HERO ============ -->
     <section class="hero">
+        <div class="floating-ornament ornament-1">😭</div>
+        <div class="floating-ornament ornament-2">✨</div>
+        <div class="floating-ornament ornament-3">💔</div>
+        <div class="floating-ornament ornament-4">🎉</div>
+        <div class="floating-ornament ornament-5">🌟</div>
+        <div class="floating-ornament ornament-6">💫</div>
+        
         <div class="hero-content">
             <div class="emoji-big">😭✨</div>
             <h1>BJIR RINJUL CABUT!</h1>
@@ -452,8 +954,14 @@
         <div class="scroll-indicator">↓</div>
     </section>
 
-    <!-- Opening Message -->
+    <!-- ============ SLIDE 2: OPENING MESSAGE ============ -->
     <section class="section-light">
+        <div class="section-2-ornament tear-drop-1">💧</div>
+        <div class="section-2-ornament tear-drop-2">💧</div>
+        <div class="section-2-ornament tear-drop-3">💧</div>
+        <div class="section-2-ornament tear-drop-4">😭</div>
+        <div class="section-2-ornament tear-drop-5">💔</div>
+        
         <div class="container">
             <div class="content-box">
                 <h2>Anjay Sedih Cuk 😭</h2>
@@ -465,49 +973,89 @@
         </div>
     </section>
 
-    <!-- Memories Section with Images -->
+    <!-- ============ SLIDE 3: MEMORIES WITH PHOTOS ============ -->
     <section class="section-dark image-section">
+        <div class="memory-sparkle sparkle-1">✨</div>
+        <div class="memory-sparkle sparkle-2">💫</div>
+        <div class="memory-sparkle sparkle-3">⭐</div>
+        <div class="memory-sparkle sparkle-4">✨</div>
+        <div class="memory-sparkle sparkle-5">🌟</div>
+        <div class="memory-sparkle sparkle-6">💫</div>
+        
         <div class="container">
             <div class="content-box">
                 <h2>Kenangan Bareng Lu 📸</h2>
-                <p>Bjir in momen-momen agak gokil pas kita kerja bareng dulu. Ga nyangka udah sampe sini aja waktunya... gw juga keluar sih wkwkwkwk</p>
+                <p>Bjir ini momen-momen agak gokil pas kita kerja bareng dulu. Ga nyangka udah sampe sini aja waktunya... gw juga keluar sih wkwkwkwk</p>
                 
                 <div class="image-grid">
                     <div class="image-box">
-                        <img src="foto1.jpeg" alt="Kenangan 1">
+                        <img src="foto2.jpeg" alt="Kenangan 1">
                     </div>
                     <div class="image-box">
-                        <img src="foto2.jpeg" alt="Kenangan 2">
+                        <img src="foto3.jpeg" alt="Kenangan 2">
                     </div>
                     <div class="image-box">
-                        <img src="foto3.jpeg" alt="Kenangan 3">
+                        <img src="foto4.jpeg" alt="Kenangan 3">
                     </div>
                     <div class="image-box">
-                        <img src="foto4.jpeg" alt="Kenangan 4">
+                        <img src="foto1.jpeg" alt="Kenangan 4">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Appreciation Section -->
+    <!-- ============ SLIDE 4: APPRECIATION ============ -->
     <section class="section-light">
         <div class="container">
             <div class="content-box">
                 <h2>Yang Gw Apresiasi Dari Lu 💎</h2>
-                <p>Rinjal Rinjul, lu tuh senior yang paling Moodyan sedunia anjir. Serius gw bilang:</p>
-                <p>✨ Lu selalu bantuin gw kalo gw lagi bingung nyari kaliper 🗿<br>
-                💪 adang ngonmel-ngomel meski gw sering nanya hal bodoh<br>
-                😂 Lu bikin suasana lab jadi g nagntuk bjir, seru bingit<br>
-                🎯 Lu ngajarin gw banyak hal yang sekarang gw pake terus di kampus :)<br>
-                🤝 Lu treat gw kayak temen, bukan junior biasa bjir</p>
-                <p>Bjir pokoknya lu tuh senior terbaik yang pernah gw punya (lu doang seniornya soalnya wkwkwkwk).</p>
+                <p>Rinjal Rinjul, lu tuh senior yang paling moodyan sedunia anjir. Serius gw bilang:</p>
+                
+                <div class="appreciation-cards">
+                    <div class="appreciation-card">
+                        <div class="appreciation-card-icon">🗿</div>
+                        <div class="appreciation-card-title">Selalu Bantuin</div>
+                        <div class="appreciation-card-text">Lu selalu bantuin gw kalo gw lagi bingung nyari kaliper</div>
+                    </div>
+                    <div class="appreciation-card">
+                        <div class="appreciation-card-icon">💪</div>
+                        <div class="appreciation-card-title">Sabar Banget</div>
+                        <div class="appreciation-card-text">Gak pernah ngomel-ngomel meski gw sering nanya hal bodoh</div>
+                    </div>
+                    <div class="appreciation-card">
+                        <div class="appreciation-card-icon">😂</div>
+                        <div class="appreciation-card-title">Bikin Seru</div>
+                        <div class="appreciation-card-text">Lu bikin suasana lab jadi ga ngantuk bjir, seru bingit</div>
+                    </div>
+                    <div class="appreciation-card">
+                        <div class="appreciation-card-icon">🎯</div>
+                        <div class="appreciation-card-title">Ngajarin Banyak</div>
+                        <div class="appreciation-card-text">Lu ngajarin gw banyak hal yang sekarang gw pake di kampus</div>
+                    </div>
+                    <div class="appreciation-card">
+                        <div class="appreciation-card-icon">🤝</div>
+                        <div class="appreciation-card-title">Teman Sungguhan</div>
+                        <div class="appreciation-card-text">Lu treat gw kayak temen, bukan junior biasa bjir</div>
+                    </div>
+                    <div class="appreciation-card">
+                        <div class="appreciation-card-icon">👑</div>
+                        <div class="appreciation-card-title">Senior Terbaik</div>
+                        <div class="appreciation-card-text">Pokoknya lu tuh senior terbaik yang pernah gw punya</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- More Alay Section -->
+    <!-- ============ SLIDE 5: EMOTIONS ============ -->
     <section class="section-dark">
+        <div class="memory-ornament mem-ornament-1">🌙</div>
+        <div class="memory-ornament mem-ornament-2">💭</div>
+        <div class="memory-ornament mem-ornament-3">🎭</div>
+        <div class="memory-ornament mem-ornament-4">💔</div>
+        <div class="memory-ornament mem-ornament-5">✨</div>
+        
         <div class="container">
             <div class="content-box">
                 <h2>Gw Bakal Kangen Banget Anjir 😢</h2>
@@ -518,22 +1066,79 @@
                 🎮 Gw ceritain hal-hal goblok yang gw lakuin<br>
                 😭 Gw titipin pukis bjiiiir<br>
                 💻 Gw tapi juga mau kabur bareng lu sih wkwkkw </p>
-                <p>Anjir gw bingung banget nanti kalo lu udah ga ada. Tapi ya gw seneng sih lu dapet kesempatan lebih bagus. Lu emang pantas Senior!</p>
+                
+                <p style="margin-top: 35px;">Anjir gw bingung banget nanti kalo lu udah ga ada. Tapi ya gw seneng sih lu dapet kesempatan lebih bagus. Lu emang pantas Senior!</p>
             </div>
         </div>
     </section>
 
-    <!-- Final Wishes -->
+    <!-- ============ SLIDE 6: GAME ============ -->
+    <section class="section-dark">
+        <div class="floating-ornament ornament-1" style="font-size: 2.5em; top: 15%; left: 8%;">💕</div>
+        <div class="floating-ornament ornament-2" style="font-size: 2.5em; top: 20%; right: 10%;">❤️</div>
+        <div class="floating-ornament ornament-3" style="font-size: 2.5em; bottom: 15%; left: 5%;">💖</div>
+        <div class="floating-ornament ornament-4" style="font-size: 2.5em; bottom: 20%; right: 8%;">✨</div>
+        
+        <div class="container">
+            <div class="content-box">
+                <div class="game-container">
+                    <div class="game-title">💕 TARIK HATI RINJUL 💕</div>
+                    <p style="color: #cbd5e1; margin-bottom: 20px; font-size: 1em;">Main game ini buat dapetin score 100! Setiap klik = +1 Roti buat Rinjul ❤️</p>
+                    
+                    <div style="text-align: center; margin: 30px 0;">
+                        <div id="heart">❤️</div>
+                    </div>
+                    
+                    <div class="score-display">Score: <span id="score">0</span> / 100 ❤️</div>
+                    
+                    <div class="progress-bar-game">
+                        <div class="progress-bar-game-fill" id="gameProgress"></div>
+                    </div>
+                    
+                    <div class="game-instruction">🎁 Klik sebanyak mungkin! Unlock special ending di 100! 🎁</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SLIDE 7: FINAL WISHES ============ -->
     <section class="final-section">
+        <div class="final-ornament final-ornament-1">🚀</div>
+        <div class="final-ornament final-ornament-2">⭐</div>
+        <div class="final-ornament final-ornament-3">💫</div>
+        <div class="final-ornament final-ornament-4">✨</div>
+        
         <div class="container">
             <div class="content-box">
                 <h2>Pesan Terakhir Gw 🌟</h2>
                 <p>Rinjul, gw doain lu:</p>
-                <p>🚀 Makin sukses di tempat baru<br>
-                💼 Dapet bos yang ga nyebelin (beda sama gw 😂)<br>
-                🎉 Selalu sehat dan happy<br>
-                💰 Gajinya naik 1 Miliyar (amiin!)<br>
-                🤝 Jangan lupa sama gw, tetep kontak-kontakan ya!</p>
+                
+                <div class="wishes-container">
+                    <div class="wish-item">
+                        <div class="wish-icon">🚀</div>
+                        <div class="wish-text">Makin Sukses di tempat baru</div>
+                    </div>
+                    <div class="wish-item">
+                        <div class="wish-icon">💼</div>
+                        <div class="wish-text">Bos Bagus gak nyebelin</div>
+                    </div>
+                    <div class="wish-item">
+                        <div class="wish-icon">🎉</div>
+                        <div class="wish-text">Selalu Happy dan sehat</div>
+                    </div>
+                    <div class="wish-item">
+                        <div class="wish-icon">💰</div>
+                        <div class="wish-text">Gajinya Naik 1 Miliyar!</div>
+                    </div>
+                    <div class="wish-item">
+                        <div class="wish-icon">🤝</div>
+                        <div class="wish-text">Jangan Lupa kontak-kontakan</div>
+                    </div>
+                    <div class="wish-item">
+                        <div class="wish-icon">👑</div>
+                        <div class="wish-text">Bersinar Terang selalu</div>
+                    </div>
+                </div>
                 
                 <p style="margin-top: 35px; font-size: 1.05em;">Bjir gw bakal kangen lu banget cuk. Lu senior paling gokil yang pernah gw kenal. Kapan-kapan kita ngopi bareng lagi ya, gw traktir deh!</p>
                 
@@ -547,7 +1152,7 @@
     </section>
 
     <script>
-        // Progress Bar Animation
+        // ============ PROGRESS BAR ============
         window.addEventListener('scroll', () => {
             const windowHeight = window.innerHeight;
             const documentHeight = document.documentElement.scrollHeight - windowHeight;
@@ -556,62 +1161,178 @@
             document.getElementById('progressBar').style.width = progress + '%';
         });
 
-        // Smooth Scroll on Arrow Click
+        // ============ SMOOTH SCROLL INDICATOR ============
         document.querySelector('.scroll-indicator').addEventListener('click', () => {
-            window.scrollTo({
+            window.scrollBy({
                 top: window.innerHeight,
                 behavior: 'smooth'
             });
         });
-        
-        // Keyboard Navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowDown') {
-                e.preventDefault();
-                window.scrollBy({
-                    top: window.innerHeight,
-                    behavior: 'smooth'
-                });
-            } else if (e.key === 'ArrowUp') {
-                e.preventDefault();
-                window.scrollBy({
-                    top: -window.innerHeight,
-                    behavior: 'smooth'
-                });
-            }
-        });
 
-        // Touch Swipe Support for Mobile
-        let touchStartY = 0;
-        let touchEndY = 0;
-        
-        document.addEventListener('touchstart', (e) => {
-            touchStartY = e.changedTouches[0].screenY;
-        });
-        
-        document.addEventListener('touchend', (e) => {
-            touchEndY = e.changedTouches[0].screenY;
-            handleSwipe();
-        });
-        
-        function handleSwipe() {
-            const swipeThreshold = 50;
-            if (touchStartY - touchEndY > swipeThreshold) {
-                // Swipe up
-                window.scrollBy({
-                    top: window.innerHeight,
-                    behavior: 'smooth'
-                });
-            } else if (touchEndY - touchStartY > swipeThreshold) {
-                // Swipe down
-                window.scrollBy({
-                    top: -window.innerHeight,
-                    behavior: 'smooth'
+        // ============ AUDIO SYSTEM WITH AUTOPLAY ============
+        const bgMusic = document.getElementById('bgMusic');
+        const audioControl = document.getElementById('audioControl');
+        const musicInfo = document.getElementById('musicInfo');
+        let isMusicPlaying = false;
+        let hasInteracted = false;
+
+        // Set volume
+        bgMusic.volume = 0.5;
+
+        // Function to start music
+        function startMusic() {
+            if (!hasInteracted) {
+                bgMusic.play().then(() => {
+                    isMusicPlaying = true;
+                    hasInteracted = true;
+                    audioControl.innerHTML = '<span class="audio-icon">🎵</span>';
+                    audioControl.style.opacity = '1';
+                    musicInfo.textContent = 'Music playing 🎶';
+                }).catch(err => {
+                    console.log('Autoplay prevented:', err);
                 });
             }
         }
+
+        // Autoplay on ANY user interaction (mousemove, touchstart, scroll)
+        document.addEventListener('mousemove', startMusic, { once: true });
+        document.addEventListener('touchstart', startMusic, { once: true });
+        document.addEventListener('scroll', startMusic, { once: true });
+        document.addEventListener('click', startMusic, { once: true });
+
+        // Audio control button
+        audioControl.addEventListener('click', () => {
+            isMusicPlaying = !isMusicPlaying;
+            if (isMusicPlaying) {
+                bgMusic.play();
+                audioControl.innerHTML = '<span class="audio-icon">🎵</span>';
+                audioControl.style.opacity = '1';
+                musicInfo.textContent = 'Music playing 🎶';
+            } else {
+                bgMusic.pause();
+                audioControl.innerHTML = '<span class="audio-icon">🔇</span>';
+                audioControl.style.opacity = '0.5';
+                musicInfo.textContent = 'Music paused';
+            }
+        });
+
+        // ============ GAME LOGIC ============
+        let score = 0;
+        const heart = document.getElementById('heart');
+        const scoreDisplay = document.getElementById('score');
+        const gameProgress = document.getElementById('gameProgress');
+
+        const emojis = ['❤️', '💕', '💖', '💗', '💓', '🎂', '💞'];
+        
+        heart.addEventListener('click', (e) => {
+            if (score >= 100) return;
+            
+            score++;
+            scoreDisplay.textContent = score;
+            gameProgress.style.width = score + '%';
+            
+            // Animate score
+            scoreDisplay.parentElement.style.animation = 'none';
+            setTimeout(() => {
+                scoreDisplay.parentElement.style.animation = 'scoreUpdate 0.5s ease-out';
+            }, 10);
+            
+            // Change heart emoji randomly
+            heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            
+            // Create particles
+            createParticle(e.clientX, e.clientY);
+            
+            // Check for completion
+            if (score === 100) {
+                setTimeout(() => {
+                    celebrateWin();
+                }, 500);
+            }
+        });
+
+        function createParticle(x, y) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.textContent = ['💖', '✨', '💫', '⭐'][Math.floor(Math.random() * 4)];
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+            
+            const tx = (Math.random() - 0.5) * 200;
+            const ty = (Math.random() - 0.5) * 200;
+            particle.style.setProperty('--tx', tx + 'px');
+            particle.style.setProperty('--ty', ty + 'px');
+            
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 1000);
+        }
+
+        function celebrateWin() {
+            // Confetti explosion
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    createConfetti();
+                }, i * 30);
+            }
+            
+            // Change heart to trophy
+            heart.textContent = '🏆';
+            heart.style.fontSize = '6em';
+            
+            // Victory message
+            const gameTitle = document.querySelector('.game-title');
+            gameTitle.textContent = '🎉 SELAMAT! LU HEBAT! 🎉';
+            
+            const gameInstruction = document.querySelector('.game-instruction');
+            gameInstruction.textContent = '🎂 Rinjul pasti seneng banget! Lu udah kasih 100 Roti! 🎂';
+            gameInstruction.style.color = '#ffd89b';
+            gameInstruction.style.fontSize = '1.2em';
+        }
+
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.top = '-10px';
+            confetti.style.background = ['#667eea', '#764ba2', '#f093fb', '#f5576c', '#ffd89b'][Math.floor(Math.random() * 5)];
+            confetti.style.animation = `confetti-fall ${2 + Math.random() * 2}s linear forwards`;
+            
+            document.body.appendChild(confetti);
+            
+            setTimeout(() => {
+                confetti.remove();
+            }, 4000);
+        }
+
+        // ============ INTERSECTION OBSERVER FOR ANIMATIONS ============
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.content-box').forEach(box => {
+            box.style.opacity = '0';
+            box.style.transform = 'translateY(50px)';
+            box.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+            observer.observe(box);
+        });
+
+        // ============ CONSOLE EASTER EGG ============
+        console.log('%c🚀 Selamat Jalan Rinjul! 🚀', 'font-size: 30px; color: #667eea; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);');
+        console.log('%cWebsite ini dibuat dengan ❤️ oleh Afaj (AZ)', 'font-size: 14px; color: #f093fb;');
+        console.log('%cSemangat di tempat baru ya Senior! 💪', 'font-size: 16px; color: #764ba2; font-weight: bold;');
     </script>
 </body>
 </html>
-
-
