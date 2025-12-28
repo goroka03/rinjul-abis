@@ -52,6 +52,116 @@
             overflow: hidden;
         }
         
+        /* ============ MUSIC POPUP OVERLAY ============ */
+        .music-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .music-popup {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            padding: 50px 40px;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: 0 30px 80px rgba(102, 126, 234, 0.6);
+            animation: popupSlide 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            max-width: 450px;
+            width: 90%;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        @keyframes popupSlide {
+            from {
+                opacity: 0;
+                transform: translateY(-100px) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .popup-icon {
+            font-size: 5em;
+            margin-bottom: 20px;
+            animation: popupIconBounce 1s ease-in-out infinite;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));
+        }
+        
+        @keyframes popupIconBounce {
+            0%, 100% { transform: scale(1) rotate(-5deg); }
+            50% { transform: scale(1.15) rotate(5deg); }
+        }
+        
+        .popup-title {
+            font-size: 2em;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            letter-spacing: -1px;
+        }
+        
+        .popup-subtitle {
+            font-size: 1.1em;
+            margin-bottom: 35px;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+        
+        .play-music-btn {
+            background: rgba(255, 255, 255, 0.95);
+            color: #667eea;
+            font-size: 1.3em;
+            font-weight: 800;
+            padding: 18px 50px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .play-music-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            background: #ffffff;
+        }
+        
+        .play-music-btn:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+        
+        .popup-hide {
+            animation: popupHide 0.5s ease-out forwards;
+        }
+        
+        @keyframes popupHide {
+            to {
+                opacity: 0;
+                transform: scale(0.8);
+                pointer-events: none;
+            }
+        }
+        
         /* ============ HERO SECTION ============ */
         .hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
@@ -889,6 +999,23 @@
                 max-width: 150px;
                 font-size: 0.85em;
             }
+            
+            .music-popup {
+                padding: 40px 30px;
+            }
+            
+            .popup-title {
+                font-size: 1.7em;
+            }
+            
+            .popup-subtitle {
+                font-size: 1em;
+            }
+            
+            .play-music-btn {
+                font-size: 1.1em;
+                padding: 15px 40px;
+            }
         }
         
         @media (max-width: 375px) {
@@ -919,10 +1046,37 @@
             .floating-ornament {
                 font-size: 1.8em;
             }
+            
+            .music-popup {
+                padding: 35px 25px;
+            }
+            
+            .popup-icon {
+                font-size: 4em;
+            }
+            
+            .popup-title {
+                font-size: 1.5em;
+            }
+            
+            .play-music-btn {
+                font-size: 1em;
+                padding: 14px 35px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Music Popup Overlay -->
+    <div class="music-popup-overlay" id="musicPopup">
+        <div class="music-popup">
+            <div class="popup-icon">🎵✨</div>
+            <div class="popup-title">PLAY MUSIK YUK!</div>
+            <div class="popup-subtitle">Biar makin seru, nyalain musiknya dong bro! Pengalaman lu bakal jadi lebih epic! 🔥</div>
+            <button class="play-music-btn" id="playMusicBtn">🎶 PLAY MUSIC! 🎶</button>
+        </div>
+    </div>
+
     <!-- Progress Bar -->
     <div class="progress-bar" id="progressBar"></div>
 
@@ -930,7 +1084,7 @@
     <div class="audio-control" id="audioControl" title="Toggle Music">
         <span class="audio-icon">🎵</span>
     </div>
-    <div class="music-info" id="musicInfo">Click to play music 🎶</div>
+    <div class="music-info" id="musicInfo">Music playing 🎶</div>
 
     <!-- Background Music -->
     <audio id="bgMusic" loop>
@@ -1082,14 +1236,14 @@
         <div class="container">
             <div class="content-box">
                 <div class="game-container">
-                    <div class="game-title">💕 TARIK HATI RINJUL 💕</div>
-                    <p style="color: #cbd5e1; margin-bottom: 20px; font-size: 1em;">Main game ini buat dapetin score 100! Setiap klik = +1 Roti buat Rinjul ❤️</p>
+                    <div class="game-title">💕 TARIK ROTI RINJUL 💕</div>
+                    <p style="color: #cbd5e1; margin-bottom: 20px; font-size: 1em;">Main game ini buat dapetin score 100! Setiap klik = +1 ROTI buat Rinjul 🎂</p>
                     
                     <div style="text-align: center; margin: 30px 0;">
                         <div id="heart">❤️</div>
                     </div>
                     
-                    <div class="score-display">Score: <span id="score">0</span> / 100 ❤️</div>
+                    <div class="score-display">Score: <span id="score">0</span> / 100 🎂</div>
                     
                     <div class="progress-bar-game">
                         <div class="progress-bar-game-fill" id="gameProgress"></div>
@@ -1169,36 +1323,36 @@
             });
         });
 
-        // ============ AUDIO SYSTEM WITH AUTOPLAY ============
+        // ============ AUDIO SYSTEM WITH POPUP ============
         const bgMusic = document.getElementById('bgMusic');
         const audioControl = document.getElementById('audioControl');
         const musicInfo = document.getElementById('musicInfo');
+        const musicPopup = document.getElementById('musicPopup');
+        const playMusicBtn = document.getElementById('playMusicBtn');
         let isMusicPlaying = false;
-        let hasInteracted = false;
 
         // Set volume
         bgMusic.volume = 0.5;
 
-        // Function to start music
-        function startMusic() {
-            if (!hasInteracted) {
-                bgMusic.play().then(() => {
-                    isMusicPlaying = true;
-                    hasInteracted = true;
-                    audioControl.innerHTML = '<span class="audio-icon">🎵</span>';
-                    audioControl.style.opacity = '1';
-                    musicInfo.textContent = 'Music playing 🎶';
-                }).catch(err => {
-                    console.log('Autoplay prevented:', err);
-                });
-            }
-        }
-
-        // Autoplay on ANY user interaction (mousemove, touchstart, scroll)
-        document.addEventListener('mousemove', startMusic, { once: true });
-        document.addEventListener('touchstart', startMusic, { once: true });
-        document.addEventListener('scroll', startMusic, { once: true });
-        document.addEventListener('click', startMusic, { once: true });
+        // Play Music Button Click
+        playMusicBtn.addEventListener('click', () => {
+            // Play music
+            bgMusic.play().then(() => {
+                isMusicPlaying = true;
+                audioControl.innerHTML = '<span class="audio-icon">🎵</span>';
+                audioControl.style.opacity = '1';
+                musicInfo.textContent = 'Music playing 🎶';
+                
+                // Hide popup with animation
+                musicPopup.classList.add('popup-hide');
+                setTimeout(() => {
+                    musicPopup.style.display = 'none';
+                }, 500);
+            }).catch(err => {
+                console.log('Music play error:', err);
+                alert('Gagal play musik! Coba klik sekali lagi ya bro 🎵');
+            });
+        });
 
         // Audio control button
         audioControl.addEventListener('click', () => {
@@ -1222,7 +1376,7 @@
         const scoreDisplay = document.getElementById('score');
         const gameProgress = document.getElementById('gameProgress');
 
-        const emojis = ['❤️', '💕', '💖', '💗', '💓', '🎂', '💞'];
+        const emojis = ['❤️', '💕', '💖', '💗', '💓', '💝', '💞'];
         
         heart.addEventListener('click', (e) => {
             if (score >= 100) return;
@@ -1287,7 +1441,7 @@
             gameTitle.textContent = '🎉 SELAMAT! LU HEBAT! 🎉';
             
             const gameInstruction = document.querySelector('.game-instruction');
-            gameInstruction.textContent = '🎂 Rinjul pasti seneng banget! Lu udah kasih 100 Roti! 🎂';
+            gameInstruction.textContent = '💝 Rinjul pasti seneng banget! Lu udah kasih 100 ROTI! 💝';
             gameInstruction.style.color = '#ffd89b';
             gameInstruction.style.fontSize = '1.2em';
         }
